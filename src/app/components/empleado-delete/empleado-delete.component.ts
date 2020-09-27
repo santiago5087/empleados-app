@@ -3,11 +3,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { EmpleadosService } from '../../services/empleados.service';
+import { flyInOut } from '../../animations/app.animation';
 
 @Component({
   selector: 'app-empleado-delete',
   templateUrl: './empleado-delete.component.html',
-  styleUrls: ['./empleado-delete.component.scss']
+  styleUrls: ['./empleado-delete.component.scss'],
+  host: {
+    '[@flyInOut]' : 'true', // Se aplica al padre porque es el encargado de crear/destruir los elem.
+    'style': 'display: block' // Para que pueda funcionar la animación sobre el container
+  },
+  animations: [
+    flyInOut()
+    ]
 })
 export class EmpleadoDeleteComponent implements OnInit {
 

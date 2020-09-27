@@ -4,11 +4,19 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { Empleado } from '../../models/Empleado';
 import { EmpleadosService } from '../../services/empleados.service';
+import { flyInOut } from '../../animations/app.animation';
 
 @Component({
   selector: 'app-empleado-create',
   templateUrl: './empleado-create.component.html',
-  styleUrls: ['./empleado-create.component.scss']
+  styleUrls: ['./empleado-create.component.scss'],
+  host: {
+    '[@flyInOut]' : 'true', // Se aplica al padre porque es el encargado de crear/destruir los elem.
+    'style': 'display: block' // Para que pueda funcionar la animación sobre el container
+  },
+  animations: [
+    flyInOut()
+    ]
 })
 export class EmpleadoCreateComponent implements OnInit {
 

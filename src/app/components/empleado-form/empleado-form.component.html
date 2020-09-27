@@ -30,7 +30,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>  Name </th>
-      <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.name? element.name : "No name provided" }} </td>
     </ng-container>
 
     <!-- ContractTypeName Column -->
@@ -58,13 +58,17 @@
     <!-- HourlySalary Column -->
     <ng-container matColumnDef="hourlySalary">
       <th mat-header-cell *matHeaderCellDef> HourlySalary </th>
-      <td mat-cell *matCellDef="let element"> {{ element.hourlySalary | currency }} </td>
+      <td mat-cell *matCellDef="let element"> 
+        {{ element.hourlySalary? (element.hourlySalary | currency) : "No hourlySalary provided" }} 
+      </td>
     </ng-container>
 
     <!-- MonthlySalary Column -->
     <ng-container matColumnDef="monthlySalary">
       <th mat-header-cell *matHeaderCellDef> MonthlySalary </th>
-      <td mat-cell *matCellDef="let element"> {{ element.monthlySalary  | currency}} </td>
+      <td mat-cell *matCellDef="let element"> 
+        {{ element.monthlySalary? (element.monthlySalary | currency) : "No monthlySalary provided" }} 
+      </td>
     </ng-container>
 
     <!-- AnnualSalary Column -->
@@ -76,6 +80,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-    </table>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 15, 30]"></mat-paginator>
   </ng-container>
 </div>

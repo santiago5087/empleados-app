@@ -24,6 +24,7 @@ import { EmpleadoCreateComponent } from './components/empleado-create/empleado-c
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { EmpleadoDeleteComponent } from './components/empleado-delete/empleado-delete.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { EmpleadoDeleteComponent } from './components/empleado-delete/empleado-d
     MatTableModule,
     MatToolbarModule,
     MatSnackBarModule,
-    MatRadioModule
+    MatRadioModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
