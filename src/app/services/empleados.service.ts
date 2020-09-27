@@ -18,12 +18,12 @@ export class EmpleadosService {
 
   constructor(private http: HttpClient) { }
 
-  getOneEmpleado(): Observable<ResponseEmpleado> {
-    return this.http.get<ResponseEmpleado>(`${this.API_URI}empleados`);
-  }
-
-
-  getAllEmpleados(id: number): Observable<ResponseEmpleado> {
+  getOneEmpleado(id: number): Observable<ResponseEmpleado> {
     return this.http.get<ResponseEmpleado>(`${this.API_URI}empleados/${id}`);
   }
+
+  getAllEmpleados(): Observable<ResponseEmpleado> {
+    return this.http.get<ResponseEmpleado>(`${this.API_URI}empleados`);
+  }
+  
 }

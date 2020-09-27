@@ -1,15 +1,33 @@
-<div class="container" fxLayout="row wrap" fxLayoutAlign="center center">
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
   <form [formGroup]="buscarEmpForm" (ngSubmit)="buscarEmp()"
         fxLayout="column" fxLayoutAlign="space-around center">
-        <h4 matLine>Buscar Empleado</h4>
-        <div fxLayout="row wrap" fxLayoutAlign="space-around center">
-          <mat-form-field fxFlex style="margin: 0 5px">
-            <mat-label>ID Empleado</mat-label>
-            <input matInput formControlName="id" type="number">
-          </mat-form-field>
-        </div>
-        <button fxFlex mat-flat-button class="search-button" color="primary" type="submit">
-          <i class="fas fa-search"></i> Buscar
-        </button>
-      </form>
+    <h4 matLine>Buscar Empleado</h4>
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+      <mat-form-field fxFlex style="margin: 0 5px">
+        <mat-label>ID Empleado</mat-label>
+        <input matInput formControlName="id" type="number">
+      </mat-form-field>
+    </div>
+    <button fxFlex mat-flat-button class="search-button" color="primary" type="submit">
+      <i class="fas fa-search"></i> Buscar
+    </button>
+  </form>
+
+  <table mat-table [dataSource]="empleados">
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> name </th>
+    <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
 </div>
