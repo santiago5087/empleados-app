@@ -23,13 +23,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { EmpleadoCreateComponent } from './components/empleado-create/empleado-create.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
+import { EmpleadoDeleteComponent } from './components/empleado-delete/empleado-delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpleadoFormComponent,
     NavigationComponent,
-    EmpleadoCreateComponent
+    EmpleadoCreateComponent,
+    EmpleadoDeleteComponent
   ],
   imports: [
     BrowserModule,

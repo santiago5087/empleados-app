@@ -1,0 +1,15 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+  <form [formGroup]="deleteEmpForm" (ngSubmit)="borrarEmp()"
+        fxLayout="column" fxLayoutAlign="space-around center">
+    <h2 matLine>Eliminar Empleado</h2>
+    <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+      <mat-form-field fxFlex style="margin: 0 5px">
+        <mat-label>ID Empleado</mat-label>
+        <input matInput formControlName="id" type="number" required>
+      </mat-form-field>
+    </div>
+    <button fxFlex mat-flat-button class="search-button" color="primary" type="submit">
+      <i class="fas fa-search"></i> Eliminar Empleado
+    </button>
+  </form>
+</div>

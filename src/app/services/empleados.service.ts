@@ -31,5 +31,9 @@ export class EmpleadosService {
   createEmpleado(emp: Empleado): Observable<ResponseEmpleado> {
     return this.http.post<ResponseEmpleado>(`${this.API_URI}empleados`, emp);
   }
+
+  deleteEmpleado(id: number): Observable<ResponseEmpleado> {
+    return this.http.delete<ResponseEmpleado>(`${this.API_URI}empleados/${id}`);
+  }
   
 }
