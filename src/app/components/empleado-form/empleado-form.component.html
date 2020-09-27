@@ -1,22 +1,22 @@
 <div class="container" fxLayout="column" fxLayoutAlign="center center">
   <form [formGroup]="buscarEmpForm" (ngSubmit)="buscarEmp()"
         fxLayout="column" fxLayoutAlign="space-around center">
-    <h2 matLine>Buscar Empleado</h2>
+    <h2 matLine>Search Employees</h2>
     <div fxLayout="row wrap" fxLayoutAlign="space-around center">
       <mat-form-field fxFlex style="margin: 0 5px">
-        <mat-label>ID Empleado</mat-label>
+        <mat-label>Employee ID</mat-label>
         <input matInput formControlName="id" type="number">
       </mat-form-field>
     </div>
     <button fxFlex mat-flat-button class="search-button" color="primary" type="submit">
-      <i class="fas fa-search"></i> Obtener Empleados
+      <i class="fas fa-search"></i> Get Employees
     </button>
   </form>
   
   <ng-container *ngIf="empleados.data.length > 0">
     <!-- Filter de la tabla -->
     <mat-form-field appearance="fill" style="width: 40%;">
-      <mat-label>Filtrar Tabla</mat-label>
+      <mat-label>Filter Table</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Busca cualquier dato en la tabla" #input>
     </mat-form-field>
     <table mat-table [dataSource]="empleados" class="emp-table">
@@ -81,6 +81,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 15, 30]"></mat-paginator>
   </ng-container>
 </div>

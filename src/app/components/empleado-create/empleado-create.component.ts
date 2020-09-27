@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
@@ -18,7 +18,7 @@ import { flyInOut } from '../../animations/app.animation';
     flyInOut()
     ]
 })
-export class EmpleadoCreateComponent implements OnInit {
+export class EmpleadoCreateComponent {
 
   // Formulario
   crearEmpForm: FormGroup;
@@ -31,10 +31,6 @@ export class EmpleadoCreateComponent implements OnInit {
     private snackBar: MatSnackBar) { 
       this.createForm();
     }
-
-  ngOnInit(): void {
-  }
-
 
   createForm() {
     this.crearEmpForm = this.fb.group({
@@ -58,12 +54,13 @@ export class EmpleadoCreateComponent implements OnInit {
         this.reiniciarForm();
       }, err => {
         this.snackBarConfig.duration = 5000;
-        this.snackBar.open("El ID del empleado ya existe, intente nuevamente" , "Ok!", this.snackBarConfig);
+        this.snackBar.open("Employee ID already exists, try again" , "Ok!", this.snackBarConfig);
       });
 
   }
 
   reiniciarForm() {
+    // Reinicia el formulario y reestablece sus valores por defecto
     this.crearEmpForm.reset({
       contractTypeName: 'MonthlySalaryEmployee',
       id: '',

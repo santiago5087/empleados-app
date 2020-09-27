@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { MatPaginator } from '@angular/material/paginator';
 
+import { Empleado } from '../../models/Empleado';
 import { EmpleadosService } from '../../services/empleados.service';
 import { flyInOut } from '../../animations/app.animation';
 
@@ -19,16 +19,13 @@ import { flyInOut } from '../../animations/app.animation';
     flyInOut()
     ]
 })
-export class EmpleadoFormComponent implements AfterViewInit {
+export class EmpleadoFormComponent {
 
   // Formulario
   buscarEmpForm: FormGroup;
-  
-  // Paginador de la tabla
-  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   // Datos para graficar la tabla
-  empleados = new MatTableDataSource([]);
+  empleados = new MatTableDataSource<Empleado>([]);
   displayedColumns: string[] = ["id", "name", "contractTypeName", "roleId", "roleDescription",
                                 "hourlySalary", "monthlySalary", "annualSalary"];
   
@@ -40,13 +37,6 @@ export class EmpleadoFormComponent implements AfterViewInit {
               private snackBar: MatSnackBar) { 
     this.createForm();
   }
-
-  ngAfterViewInit(): void {
-    // Después de que se cargan los componentes de la vista, se instancia el paginador
-    // de la tabla
-    this.empleados.paginator = this.paginator; 
-  }
-
 
   createForm() {
     this.buscarEmpForm = this.fb.group({
@@ -72,7 +62,7 @@ export class EmpleadoFormComponent implements AfterViewInit {
           this.snackBar.open(res.msg , "Ok!", this.snackBarConfig);
         }, err => {
           this.snackBarConfig.duration = 5000;
-          this.snackBar.open("Ha ocurrido un error en la consulta del empleado, intente nuevamente",
+          this.snackBar.open("An error occurred while getting employees, try again",
              "Ok!", this.snackBarConfig);
         });
 
@@ -87,7 +77,7 @@ export class EmpleadoFormComponent implements AfterViewInit {
           this.snackBar.open(res.msg , "Ok!", this.snackBarConfig);
         }, err => {
           this.snackBarConfig.duration = 5000;
-          this.snackBar.open("Ha ocurrido un error en la consulta de los empleados, intente nuevamente", 
+          this.snackBar.open("An error occurred while getting employees, try again", 
             "Ok!", this.snackBarConfig);
         });
     }

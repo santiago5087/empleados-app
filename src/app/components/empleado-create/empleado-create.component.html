@@ -1,7 +1,7 @@
 <div class="container">
   <form [formGroup]="crearEmpForm" fxLayout="column" fxLayoutAlign="space-between center"
      (ngSubmit)="crearEmpleado()">
-     <h2 matLine>Crear Empleado</h2>
+     <h2 matLine>Create Employee</h2>
      <table style="text-align: center;">
        <tr>
          <mat-form-field style="width: 100px; margin-right: 20px;">
@@ -52,10 +52,10 @@
        </tr>
       <button mat-flat-button color="primary" type="submit" class="form-button" 
         [disabled]="!crearEmpForm.valid">
-        <i class="fas fa-user-plus"></i> Crear Empleado
+        <i class="fas fa-user-plus"></i> Create Employee
       </button>
       <button mat-flat-button color="primary" type="button" class="form-button" (click)="reiniciarForm()">
-        Reiniciar Formulario
+        Reset Form
       </button>
      </table>
     </form>

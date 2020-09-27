@@ -49,7 +49,7 @@ export class EmpleadoDeleteComponent implements OnInit {
       }, err => {
 
         this.snackBarConfig.duration = 5000;
-        this.snackBar.open("Ha ocurrido un error en el borrado, intente nuevamente", 
+        this.snackBar.open("An error occurred while deleting, try again", 
           "Ok!", this.snackBarConfig);
       });
   }
