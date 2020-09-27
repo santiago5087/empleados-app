@@ -9,7 +9,7 @@
       </mat-form-field>
     </div>
     <button fxFlex mat-flat-button class="search-button" color="primary" type="submit">
-      <i class="fas fa-search"></i> Buscar
+      <i class="fas fa-search"></i> Obtener Empleados
     </button>
   </form>
   
@@ -41,32 +41,36 @@
 
     <!-- RoleId Column -->
     <ng-container matColumnDef="roleId">
-      <th mat-header-cell *matHeaderCellDef> RoleId </th>
-      <td mat-cell *matCellDef="let element"> {{ element.roleId }} </td>
+      <th mat-header-cell *matHeaderCellDef> RoleID </th>
+      <td mat-cell *matCellDef="let element"> 
+        {{ element.roleId? element.roleId : "No RoleID provided" }} 
+      </td>
     </ng-container>
 
     <!-- RoleDescription Column -->
     <ng-container matColumnDef="roleDescription">
       <th mat-header-cell *matHeaderCellDef> RoleDescription </th>
-      <td mat-cell *matCellDef="let element"> {{ element.roleDescription }} </td>
+      <td mat-cell *matCellDef="let element"> 
+        {{ element.roleDescription? element.roleDescription : "No role description provided"  }} 
+      </td>
     </ng-container>
 
     <!-- HourlySalary Column -->
     <ng-container matColumnDef="hourlySalary">
       <th mat-header-cell *matHeaderCellDef> HourlySalary </th>
-      <td mat-cell *matCellDef="let element"> {{ element.hourlySalary }} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.hourlySalary | currency }} </td>
     </ng-container>
 
     <!-- MonthlySalary Column -->
     <ng-container matColumnDef="monthlySalary">
       <th mat-header-cell *matHeaderCellDef> MonthlySalary </th>
-      <td mat-cell *matCellDef="let element"> {{ element.monthlySalary }} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.monthlySalary  | currency}} </td>
     </ng-container>
 
     <!-- AnnualSalary Column -->
     <ng-container matColumnDef="annualSalary">
       <th mat-header-cell *matHeaderCellDef> AnnualSalary </th>
-      <td mat-cell *matCellDef="let element"> {{ element.annualSalary }} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.annualSalary | currency }} </td>
     </ng-container>
     
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
