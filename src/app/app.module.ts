@@ -14,6 +14,10 @@ import { AppComponent } from './app.component';
 import { EmpleadoFormComponent } from "./components/empleado-form/empleado-form.component";
 
 // Material Components
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'; 
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import { EmpleadoFormComponent } from "./components/empleado-form/empleado-form.
     HttpClientModule,
     FormsModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
