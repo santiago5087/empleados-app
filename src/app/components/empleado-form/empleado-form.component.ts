@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
-import { Empleado } from '../../models/empleado';
 import { EmpleadosService } from '../../services/empleados.service';
 
 @Component({
@@ -12,14 +12,21 @@ import { EmpleadosService } from '../../services/empleados.service';
 })
 export class EmpleadoFormComponent implements OnInit {
 
+  // Formularios
   buscarEmpForm: FormGroup;
   crearEmpForm: FormGroup;
+
+  // Datos para graficar la tabla
   empleados = new MatTableDataSource([]);
   displayedColumns: string[] = ["id", "name", "contractTypeName", "roleId", "roleDescription",
                                 "hourlySalary", "monthlySalary", "annualSalary"];
+  
+  // Objeto de config. de Snack Bar
+  snackBarConfig = new MatSnackBarConfig()
 
   constructor(private empService: EmpleadosService,
-              private fb: FormBuilder) { 
+              private fb: FormBuilder,
+              private snackBar: MatSnackBar) { 
     this.createForm();
   }
 
@@ -44,22 +51,28 @@ export class EmpleadoFormComponent implements OnInit {
     if (id) {
       this.empService.getOneEmpleado(id)
         .subscribe(res => {
-          console.log(res);
+          console.log(res); 
+
           if (res.success) {
             this.empleados.data = [res.data];
           } else {
-            // Mostrar un snackBar con el msg
+            this.empleados.data = [];
           }
+
+          // El Snack Bar durará 5s o hasta que el usuario lo cierre
+          this.snackBarConfig.duration = 5000;
+          this.snackBar.open(res.msg , "Ok!", this.snackBarConfig);
         });
 
     } else {
       this.empService.getAllEmpleados()
         .subscribe(res => {
           console.log(res);
-          if (res.data.lenght == 0) {
-            // Mostrar un snackBar con emps=0  
-          }
           this.empleados.data = res.data;
+
+          // El Snack Bar durará 5s o hasta que el usuario lo cierre
+          this.snackBarConfig.duration = 5000;
+          this.snackBar.open(res.msg , "Ok!", this.snackBarConfig);
         });
     }
   }

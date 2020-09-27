@@ -20,13 +20,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { EmpleadoCreateComponent } from './components/empleado-create/empleado-create.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpleadoFormComponent,
-    NavigationComponent
+    NavigationComponent,
+    EmpleadoCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
