@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
+import { Empleado } from '../models/Empleado';
+
 interface ResponseEmpleado {
   success: boolean;
   data: any;
@@ -24,6 +26,10 @@ export class EmpleadosService {
 
   getAllEmpleados(): Observable<ResponseEmpleado> {
     return this.http.get<ResponseEmpleado>(`${this.API_URI}empleados`);
+  }
+
+  createEmpleado(emp: Empleado): Observable<ResponseEmpleado> {
+    return this.http.post<ResponseEmpleado>(`${this.API_URI}empleados`, emp);
   }
   
 }

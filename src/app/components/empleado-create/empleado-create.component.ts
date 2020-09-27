@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
+import { Empleado } from '../../models/Empleado';
 import { EmpleadosService } from '../../services/empleados.service';
 
 @Component({
@@ -41,12 +42,29 @@ export class EmpleadoCreateComponent implements OnInit {
   }
 
   crearEmpleado() {
-    console.log(this.crearEmpForm.value);
+    var empNuevo: Empleado = this.crearEmpForm.value;
+    this.empService.createEmpleado(empNuevo)
+      .subscribe((res) => {
+        this.snackBarConfig.duration = 5000;
+        this.snackBar.open(res.msg , "Ok!", this.snackBarConfig);
+        this.reiniciarForm();
+      }, err => {
+        this.snackBarConfig.duration = 5000;
+        this.snackBar.open("El ID del empleado ya existe, intente nuevamente" , "Ok!", this.snackBarConfig);
+      });
+
   }
 
   reiniciarForm() {
     this.crearEmpForm.reset({
-      contractTypeName: 'MonthlySalaryEmployee'
+      contractTypeName: 'MonthlySalaryEmployee',
+      id: '',
+      name: '',
+      roleName: '',
+      roleDescription: '',
+      roleId: '',
+      hourlySalary: '',
+      monthlySalary: ''
     });
   }
 }

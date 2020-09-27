@@ -55,6 +55,10 @@ export class EmpleadoFormComponent implements OnInit {
           // El Snack Bar durará 5s o hasta que el usuario lo cierre
           this.snackBarConfig.duration = 5000;
           this.snackBar.open(res.msg , "Ok!", this.snackBarConfig);
+        }, err => {
+          this.snackBarConfig.duration = 5000;
+          this.snackBar.open("Ha ocurrido un error en la consulta del empleado, intente nuevamente",
+             "Ok!", this.snackBarConfig);
         });
 
     } else {
@@ -66,6 +70,10 @@ export class EmpleadoFormComponent implements OnInit {
           // El Snack Bar durará 5s o hasta que el usuario lo cierre
           this.snackBarConfig.duration = 5000;
           this.snackBar.open(res.msg , "Ok!", this.snackBarConfig);
+        }, err => {
+          this.snackBarConfig.duration = 5000;
+          this.snackBar.open("Ha ocurrido un error en la consulta de los empleados, intente nuevamente", 
+            "Ok!", this.snackBarConfig);
         });
     }
 
