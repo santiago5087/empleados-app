@@ -15,8 +15,8 @@
   
   <ng-container *ngIf="empleados.data.length > 0">
     <!-- Filter de la tabla -->
-    <mat-form-field style="width: 40%;">
-      <mat-label>Filter</mat-label>
+    <mat-form-field appearance="fill" style="width: 40%;">
+      <mat-label>Filtrar Tabla</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Busca cualquier dato en la tabla" #input>
     </mat-form-field>
     <table mat-table [dataSource]="empleados" class="emp-table">
