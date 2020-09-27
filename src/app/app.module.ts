@@ -22,6 +22,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { EmpleadoCreateComponent } from './components/empleado-create/empleado-create.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     MatTableModule,
     MatToolbarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

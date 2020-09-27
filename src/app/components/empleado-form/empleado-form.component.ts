@@ -12,9 +12,8 @@ import { EmpleadosService } from '../../services/empleados.service';
 })
 export class EmpleadoFormComponent implements OnInit {
 
-  // Formularios
+  // Formulario
   buscarEmpForm: FormGroup;
-  crearEmpForm: FormGroup;
 
   // Datos para graficar la tabla
   empleados = new MatTableDataSource([]);
@@ -38,12 +37,6 @@ export class EmpleadoFormComponent implements OnInit {
     this.buscarEmpForm = this.fb.group({
       id: [null]
     });
-
-    this.crearEmpForm = this.fb.group({
-      id: ['', Validators.required],
-      name: [''],
-      contractTypeName: ['', Validators.required]
-    })
   }
 
   buscarEmp() {
@@ -75,6 +68,7 @@ export class EmpleadoFormComponent implements OnInit {
           this.snackBar.open(res.msg , "Ok!", this.snackBarConfig);
         });
     }
+
   }
 
   // Función que filtra los datos por medio del valor ingresado por el usuario
