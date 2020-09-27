@@ -4,11 +4,11 @@
      <h2 matLine>Crear Empleado</h2>
      <table style="text-align: center;">
        <tr>
-         <mat-form-field style="width: 250px; margin-right: 20px;">
+         <mat-form-field style="width: 100px; margin-right: 20px;">
            <mat-label>ID</mat-label>
            <input matInput formControlName="id" type="number" required>
          </mat-form-field>
-         <mat-form-field style="width: 250px;">
+         <mat-form-field style="width: 400px;">
            <mat-label>Name</mat-label>
            <input matInput formControlName="name" type="text">
          </mat-form-field>
@@ -18,20 +18,44 @@
           <mat-label>Role ID</mat-label>
           <input matInput formControlName="roleId" type="number" required>
         </mat-form-field>
-         <mat-form-field style="width: 200px; margin-right: 20px;">
+         <mat-form-field style="width: 400px">
            <mat-label>Role Name</mat-label>
            <input matInput formControlName="roleName" type="text" required>
          </mat-form-field>
-         <mat-form-field style="width: 200px;">
-           <mat-label>Role Description</mat-label>
-           <input matInput formControlName="roleDescription" type="text">
-         </mat-form-field> 
+        </tr>
+        <tr>
+          <mat-form-field style="width: 520px;">
+            <mat-label>Role Description</mat-label>
+            <textarea matInput formControlName="roleDescription" type="text" rows="5"></textarea>
+          </mat-form-field> 
        </tr>
        <tr>
-
+         <mat-radio-group fxLayout="column" formControlName="contractTypeName" style="margin: 15px 0;">
+          <mat-label style="text-align: start;">Select a contract type name:</mat-label>
+          <mat-radio-button value="MonthlySalaryEmployee" class="radio-button">
+            MonthlySalaryEmployee
+          </mat-radio-button>
+          <mat-radio-button value="HourlySalaryEmployee" class="radio-button">
+            HourlySalaryEmployee
+          </mat-radio-button>
+        </mat-radio-group>
        </tr>
-      <button mat-flat-button color="primary" type="submit" class="signup-button" [disabled]="!crearEmpForm.valid">
+       <tr>
+        <mat-form-field style="width: 250px; margin-right: 20px;">
+          <mat-label>HourlySalary</mat-label>
+          <input matInput formControlName="hourlySalary" type="number">
+        </mat-form-field>
+        <mat-form-field style="width: 250px;">
+          <mat-label>MonthlySalary</mat-label>
+          <input matInput formControlName="monthlySalary" type="number">
+        </mat-form-field>
+       </tr>
+      <button mat-flat-button color="primary" type="submit" class="form-button" 
+        [disabled]="!crearEmpForm.valid">
         Crear Empleado
+      </button>
+      <button mat-flat-button color="primary" type="button" class="form-button" (click)="reiniciarForm()">
+        Reiniciar Formulario
       </button>
      </table>
     </form>

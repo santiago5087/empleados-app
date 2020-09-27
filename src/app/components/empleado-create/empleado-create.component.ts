@@ -35,12 +35,18 @@ export class EmpleadoCreateComponent implements OnInit {
       roleId: [Validators.required],
       roleName: ['', Validators.required],
       roleDescription: '',
-      hourlySalary: 0,
-      monthlySalary: 0
+      hourlySalary: '',
+      monthlySalary: ''
     });
   }
 
   crearEmpleado() {
+    console.log(this.crearEmpForm.value);
+  }
 
+  reiniciarForm() {
+    this.crearEmpForm.reset({
+      contractTypeName: 'MonthlySalaryEmployee'
+    });
   }
 }
