@@ -1,5 +1,12 @@
 # EmpleadosApp
 
+## Instrucciones:
+Crear una copia del proyecto en su equipo y abrirla con VS code, crear una terminal integrada y pararse en la carpeta raíz del proyecto.<br><br>
+
+Ejecutar el comando "npm install" para instalar todas los paquetes y dependencias del proyecto.<br><br>
+
+Para correr la aplicación ejecutar el comando "ng serve --open". <br><br>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
 
 ## Development server
